@@ -14,7 +14,6 @@ def asignacionesSaldos():
         usuarios[i] = saldoRandom()
         return usuarios[i]
 
-
 # Diccionario de usuarios
 usuarios = {
     "Juan": 0,
@@ -29,3 +28,18 @@ usuarios = {
     "Jose": 0
 }
 
+# Menú
+
+def menu():
+    print("Bienvenido al banco")
+    print("1. Asignar saldos")
+    print("2. Clasificar saldos")
+    print("3. Consultar estadísticas de saldos")
+    print("4. Reporte de saldos")
+    print("5. Salir")
+    
+    opcion = int(input("Seleccione una opción: "))
+    
+    if opcion < 1 and opcion > 5:
+        print("Opción inválida")
+        menu()
