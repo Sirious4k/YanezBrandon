@@ -41,8 +41,10 @@ def menu():
         
         opcion = int(input("Seleccione una opción: "))
         
-        if opcion < 1 and opcion > 5:
+        if opcion < 1 or opcion > 5:
+            print("------------------------------------------------")
             print("Seleccione una opción válida")
+            print("------------------------------------------------")
         
         else:
             if (opcion == 1):
