@@ -14,6 +14,7 @@ def asignacionesSaldos():
         usuarios[i] = saldoRandom()
         return usuarios[i]
 
+# Variables
 # Diccionario de usuarios
 usuarios = {
     "Juan": 0,
@@ -29,17 +30,32 @@ usuarios = {
 }
 
 # Menú
-
 def menu():
-    print("Bienvenido al banco")
-    print("1. Asignar saldos")
-    print("2. Clasificar saldos")
-    print("3. Consultar estadísticas de saldos")
-    print("4. Reporte de saldos")
-    print("5. Salir")
-    
-    opcion = int(input("Seleccione una opción: "))
-    
-    if opcion < 1 and opcion > 5:
-        print("Opción inválida")
-        menu()
+    while(True):
+        print("Bienvenido al banco")
+        print("1. Asignar saldos")
+        print("2. Clasificar saldos")
+        print("3. Consultar estadísticas de saldos")
+        print("4. Reporte de saldos")
+        print("5. Salir")
+        
+        opcion = int(input("Seleccione una opción: "))
+        
+        if opcion < 1 and opcion > 5:
+            print("Seleccione una opción válida")
+        
+        else:
+            if (opcion == 1):
+                print("Se asignaron los siguientes saldos: ")
+                asignacionesSaldos()
+            elif (opcion == 2):
+                print("Opción 2")
+            elif (opcion == 3):
+                print("Opción 3")
+            elif (opcion == 4):
+                print("Opción 4")
+            elif (opcion == 5):
+                print("Gracias por usar el banco")
+                break
+
+menu()
