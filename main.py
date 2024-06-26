@@ -14,3 +14,8 @@ usuarios = {
     "Brandon": 0,
     "Ana": 0
 }
+
+def asignacionesSaldos():
+    for i in usuarios:
+        usuarios[i] = saldoRandom()
+        return usuarios[i]
