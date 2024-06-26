@@ -6,13 +6,11 @@ import statistics
 # Saldos randomizados entre 100.000 y 2.000.000
 def saldoRandom():
     saldos = random.randint(100000, 2000000)
-    return saldos
 
 # Asignación de saldos a usuarios
 def asignacionesSaldos():
-    for i in usuarios:
-        usuarios[i] = saldoRandom()
-        return usuarios[i]
+    for usuario in usuarios:
+        usuarios[usuario] = saldoRandom()
 
 # Variables
 # Diccionario de usuarios
@@ -50,6 +48,7 @@ def menu():
             if (opcion == 1):
                 print("Se asignaron los siguientes saldos: ")
                 asignacionesSaldos()
+                print(usuarios)
             elif (opcion == 2):
                 print("Opción 2")
             elif (opcion == 3):
@@ -59,5 +58,7 @@ def menu():
             elif (opcion == 5):
                 print("Gracias por usar el banco")
                 break
+
+
 
 menu()
