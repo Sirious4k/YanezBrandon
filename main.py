@@ -29,30 +29,20 @@ def asignacionesSaldos(usuarios):
     for usuario in usuarios:
         usuarios[usuario] = saldoRandom()
         # Categorías
-        if 100000 <= usuarios[usuario] <= 400000:
+        if 100000 <= usuarios[usuario] <= 900000:
             usuarios[usuario] = {
                 "saldo": usuarios[usuario],
                 "categoria": "bronce"
             }
-        elif 400000 < usuarios[usuario] <= 700000:
+        elif 900000 < usuarios[usuario] <= 1200000:
             usuarios[usuario] = {
                 "saldo": usuarios[usuario],
                 "categoria": "plata"
             }
-        elif 700000 < usuarios[usuario] <= 1200000:
+        elif 1200000 < usuarios[usuario] <= 2000000:
             usuarios[usuario] = {
                 "saldo": usuarios[usuario],
                 "categoria": "oro"
-            }
-        elif 1200000 < usuarios[usuario] <= 1500000:
-            usuarios[usuario] = {
-                "saldo": usuarios[usuario],
-                "categoria": "platino"
-            }
-        elif 1500000 < usuarios[usuario] <= 2000000:
-            usuarios[usuario] = {
-                "saldo": usuarios[usuario],
-                "categoria": "diamante"
             }
             
 
@@ -86,7 +76,11 @@ def menu():
                 print(recorrerValores())
                 print("------------------------------------------------")
             elif (opcion == 2):
-                print("Opción 2")
+                print("------------------------------------------------")
+                print("Categorías de usuarios...")
+                for i in usuarios:
+                    print(f"{i}: {usuarios[i]["categoria"]}")
+                print("------------------------------------------------")
             elif (opcion == 3):
                 print("Opción 3")
             elif (opcion == 4):
