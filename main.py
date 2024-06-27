@@ -2,6 +2,22 @@ import random
 import math
 import statistics
 
+# Variables
+# Diccionario de usuarios
+usuarios = {
+    "Juan": {},
+    "Leo": {},
+    "Maria": {},
+    "Jorge": {},
+    "Brandon": {},
+    "Ana": {},
+    "Pablo": {},
+    "Ron": {},
+    "Luis": {},
+    "Jose": {}
+}
+
+
 # Funciones
 # Saldos randomizados entre 100.000 y 2.000.000
 def saldoRandom():
@@ -9,29 +25,41 @@ def saldoRandom():
     return saldos
 
 # Asignación de saldos a usuarios
-def asignacionesSaldos():
-    for i in usuarios:
-        usuarios[i] = saldoRandom()
-    return usuarios[i]
+def asignacionesSaldos(usuarios):
+    for usuario in usuarios:
+        usuarios[usuario] = saldoRandom()
+        # Categorías
+        if 100000 <= usuarios[usuario] <= 400000:
+            usuarios[usuario] = {
+                "saldo": usuarios[usuario],
+                "categoria": "bronce"
+            }
+        elif 400000 < usuarios[usuario] <= 700000:
+            usuarios[usuario] = {
+                "saldo": usuarios[usuario],
+                "categoria": "plata"
+            }
+        elif 700000 < usuarios[usuario] <= 1200000:
+            usuarios[usuario] = {
+                "saldo": usuarios[usuario],
+                "categoria": "oro"
+            }
+        elif 1200000 < usuarios[usuario] <= 1500000:
+            usuarios[usuario] = {
+                "saldo": usuarios[usuario],
+                "categoria": "platino"
+            }
+        elif 1500000 < usuarios[usuario] <= 2000000:
+            usuarios[usuario] = {
+                "saldo": usuarios[usuario],
+                "categoria": "diamante"
+            }
+            
 
-# Variables
-# Diccionario de usuarios
-usuarios = {
-    "Juan": 0,
-    "Leo": 0,
-    "Maria": 0,
-    "Jorge": 0,
-    "Brandon": 0,
-    "Ana": 0,
-    "Pablo": 0,
-    "Ron": 0,
-    "Luis": 0,
-    "Jose": 0
-}
 # Valores del diccionario
 def recorrerValores():
     for i in usuarios:
-        print(f"{i}: ${usuarios[i]}")
+        print(f"{i}: ${usuarios[i]["saldo"]} - Categoría {usuarios[i]["categoria"]}")
 
 # Menú
 def menu():
@@ -54,7 +82,7 @@ def menu():
             if (opcion == 1):
                 print("------------------------------------------------")
                 print("Se asignaron los siguientes saldos: ")
-                asignacionesSaldos()
+                asignacionesSaldos(usuarios)
                 print(recorrerValores())
                 print("------------------------------------------------")
             elif (opcion == 2):
