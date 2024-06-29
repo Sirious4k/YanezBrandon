@@ -7,16 +7,16 @@ from functools import reduce
 # Variables
 # Diccionario de usuarios
 usuarios = {
-    "Juan": {},
-    "Leo": {},
-    "Maria": {},
-    "Jorge": {},
-    "Brandon": {},
-    "Ana": {},
-    "Pablo": {},
-    "Ron": {},
-    "Luis": {},
-    "Jose": {}
+    "Juan": {"saldo": 0, "categoria": ""},
+    "Leo": {"saldo": 0, "categoria": ""},
+    "Maria": {"saldo": 0, "categoria": ""},
+    "Jorge": {"saldo": 0, "categoria": ""},
+    "Brandon": {"saldo": 0, "categoria": ""},
+    "Ana": {"saldo": 0, "categoria": ""},
+    "Pablo": {"saldo": 0, "categoria": ""},
+    "Ron": {"saldo": 0, "categoria": ""},
+    "Luis": {"saldo": 0, "categoria": ""},
+    "Jose": {"saldo": 0, "categoria": ""}
 }
 
 # Funciones
@@ -42,6 +42,34 @@ def mediaGeometrica(saldos):
     producto = reduce(lambda x, y: x * y, saldos)
     media_geo = producto ** (1 / len(saldos))
     return media_geo
+
+# Función para generar el reporte y exportar a CSV
+def generarReporte(usuarios):
+    # Definir conceptos de deducción y porcentaje de cada uno
+    conceptos_deduccion = {
+        "Impuesto": 0.1,
+        "Comisión bancaria": 0.05,
+        "Seguro": 0.02
+    }
+
+    # Abrir archivo CSV para escritura
+    with open('YanezBrandon.csv', mode='w', newline='') as file:
+        writer = csv.writer(file)
+        
+    # Escribir encabezados
+        writer.writerow(['Usuario', 'Saldo inicial', 'Deducciones', 'Saldo neto'])
+        
+    # Calcular y escribir cada línea de datos
+        for usuario, detalles in usuarios.items():
+            saldo_inicial = detalles["saldo"]
+            
+            # Calcular deducciones
+            deducciones_total = sum(saldo_inicial * porcentaje for concepto, porcentaje in conceptos_deduccion.items())
+            saldo_neto = saldo_inicial - deducciones_total
+            
+            # Escribir en el archivo CSV
+            writer.writerow([usuario, saldo_inicial, deducciones_total, saldo_neto])
+            
 
 # Menú
 def menu():
@@ -86,9 +114,14 @@ def menu():
                     print("No hay saldos asignados aún.")
                 print("------------------------------------------------")
             elif opcion == 4:
-                print("Opción 4")
+                print("------------------------------------------------")
+                generarReporte(usuarios)
+                print("Se generó el reporte y se exportó a 'YanezBrandon.csv'.")
+                print("------------------------------------------------")
             elif opcion == 5:
+                print("------------------------------------------------")
                 print("Gracias por usar el banco")
+                print("------------------------------------------------")
                 break
 
 # Función para recorrer y mostrar los valores del diccionario
