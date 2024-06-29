@@ -1,10 +1,11 @@
+# 1)
 import random
 import math
 import statistics
 import csv
 from functools import reduce
 
-# Variables
+# 2)
 # Diccionario de usuarios
 usuarios = {
     "Juan": {"saldo": 0, "categoria": ""},
@@ -19,6 +20,7 @@ usuarios = {
     "Jose": {"saldo": 0, "categoria": ""}
 }
 
+# 3)
 # Funciones
 # Saldos randomizados entre 100.000 y 2.000.000
 def saldoRandom():
@@ -37,12 +39,14 @@ def asignacionesSaldos(usuarios):
         elif 1200000 < saldo <= 2000000:
             detalles["categoria"] = "oro"
 
+# 4)
 # Función para calcular la media geométrica
 def mediaGeometrica(saldos):
     producto = reduce(lambda x, y: x * y, saldos)
     media_geo = producto ** (1 / len(saldos))
     return media_geo
 
+# 5)
 # Función para generar el reporte y exportar a CSV
 def generarReporte(usuarios):
     # Definir conceptos de deducción y porcentaje de cada uno
@@ -70,7 +74,7 @@ def generarReporte(usuarios):
             # Escribir en el archivo CSV
             writer.writerow([usuario, saldo_inicial, deducciones_total, saldo_neto])
             
-
+# 6)
 # Menú
 def menu():
     while True:
@@ -123,11 +127,11 @@ def menu():
                 print("Gracias por usar el banco")
                 print("------------------------------------------------")
                 break
-
+# 7)
 # Función para recorrer y mostrar los valores del diccionario
 def recorrerValores():
     for usuario in usuarios:
         print(f"{usuario}: ${usuarios[usuario]['saldo']} - Categoría {usuarios[usuario]['categoria']}")
-
+# 8)
 # Llamar al menú principal
 menu()
